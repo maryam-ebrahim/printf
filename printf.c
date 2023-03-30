@@ -1,5 +1,9 @@
 #include "main.h"
 #include <string.h>
+#include <unistd.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 ssize_t write(int fd, const void *buf, size_t count);
 
@@ -33,7 +37,7 @@ int _printf(const char *format, ...)
 				buffer[j] = (char)va_arg(arg_list, int);
 				j++;
 			}
-			elif(format[i] == 's')
+			else if (format[i] == 's')
 			{
 				format_arg = va_arg(arg_list, char*);
 				strcpy(&buffer[j], format_arg);
